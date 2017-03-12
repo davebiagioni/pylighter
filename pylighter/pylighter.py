@@ -3,16 +3,16 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 from matplotlib.colors import ListedColormap
 
-def initialize_figure():
+def initialize_figure(palette='bwr'):
   '''Initialize a subplots figure with some default values.'''
   sns.set_style('whitegrid', {'axis.grid': False})
-  sns.set_palette('bwr')
+  sns.set_palette(palette)
   fig, ax = plt.subplots()
   ax.axis('off')
   return fig, ax
   
-def render_line(data, y_pos_pct, fig, ax, fontsize=16,
-  name='monospace', alpha=0.6, offset_factor=1.25):
+def render_line(data, y_pos_pct, fig, ax, fontsize=16, name='monospace', alpha=0.6, 
+  offset_factor=1.25):
   '''Draw a single line of text.'''
   
   cmap = ListedColormap(sns.color_palette())
@@ -35,11 +35,13 @@ def render_line(data, y_pos_pct, fig, ax, fontsize=16,
     
   return fig, ax, t, data
 
-def render(words, scores, fig, ax, fontsize=16, name='monospace', 
-  alpha=0.6, offset_factor=1.25, typical_wpl=10):
+def render(words, scores, fontsize=16, name='monospace', alpha=0.6, offset_factor=1.25, 
+  typical_wpl=10, palette='bwr'):
   
   assert len(words) <= len(scores)
   
+  fig, ax = initialize_figure(palette)
+
   # Get the dimensions needed to align text.
   props = dict(facecolor='white', pad=0.0, lw=0.)
   t_tmp = ax.text(0., 0., 'typical?', bbox=props, fontsize=fontsize, name=name, alpha=0.)
