@@ -41,7 +41,7 @@ def render(tokens, scores, fontsize=16, name='monospace', alpha=0.6, offset_fact
 
   Args:
     tokens: list of tokens to render
-    scores: list or 1d-array of scores between 0. and 1.
+    scores: list or 1d-array of scores between 0. and 1., one per token
     fontsize:  text font size
     name:  font family name
     alpha: text box transparency between 0. and 1.
@@ -52,8 +52,6 @@ def render(tokens, scores, fontsize=16, name='monospace', alpha=0.6, offset_fact
   Returns:
     fig, ax: figure and axis handles
   '''
-  
-  assert len(tokens) <= len(scores)
   
   fig, ax = initialize_figure(palette)
 
