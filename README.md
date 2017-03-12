@@ -1,2 +1,3 @@
 # pylighter
-Simple, dynamic text highlighting for Python
+Simple, score-based text highlighting for Python
+
