@@ -62,4 +62,4 @@ def render(words, scores, fontsize=16, name='monospace', alpha=0.6, offset_facto
       name=name, alpha=alpha, offset_factor=offset_factor)
     line_num += 1
     
-  return fig, ax, t
+  return fig, ax
