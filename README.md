@@ -17,4 +17,4 @@ Renders:
 
 ![Rendered Image](_img/example.png)
 
-See `pylighter/examples.ipynb` for additional examples.
+See [pylighter/examples.ipynb](pylighter/examples.ipynb) for additional examples.
