@@ -12,7 +12,7 @@ def initialize_figure(palette='bwr'):
   return fig, ax
   
 def render_line(data, y_pos_pct, fig, ax, fontsize=16, name='monospace', alpha=0.6, 
-  offset_factor=1.25):
+  offset_factor=1.29):
   '''Draw a single line of text.'''
   
   cmap = ListedColormap(sns.color_palette())
@@ -35,7 +35,7 @@ def render_line(data, y_pos_pct, fig, ax, fontsize=16, name='monospace', alpha=0
     
   return fig, ax, t, data
 
-def render(tokens, scores, fontsize=16, name='monospace', alpha=0.6, offset_factor=1.25, 
+def render(tokens, scores, fontsize=16, name='monospace', alpha=0.6, offset_factor=1.29, 
   typical_wpl=10, palette='bwr'):
   '''Render highlighted text.
 
