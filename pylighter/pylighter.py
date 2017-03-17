@@ -35,13 +35,15 @@ def render_line(data, y_pos_pct, fig, ax, fontsize=16, name='monospace', alpha=0
     
   return fig, ax, t, data
 
-def render(tokens, scores, fontsize=16, name='monospace', alpha=0.6, offset_factor=1.29, 
+def render(tokens, scores, sigma=10, fontsize=16, name='monospace', alpha=0.6, offset_factor=1.29, 
   typical_wpl=10, palette='bwr'):
   '''Render highlighted text.
 
   Args:
     tokens: list of tokens to render
     scores: list or 1d-array of scores between 0. and 1., one per token
+    sigma: sigmoid parameter for squishing scores towards 0/1. Higher values make the
+      function more step-like.
     fontsize:  text font size
     name:  font family name
     alpha: text box transparency between 0. and 1.
@@ -52,8 +54,11 @@ def render(tokens, scores, fontsize=16, name='monospace', alpha=0.6, offset_fact
   Returns:
     fig, ax: figure and axis handles
   '''
-  
+
   fig, ax = initialize_figure(palette)
+
+  # Transform the scores using sigmoid function.
+  scores = 1. / (1. + np.exp( -2 * sigma * (scores - 0.5)))
 
   # Get the dimensions needed to align text.
   props = dict(facecolor='white', pad=0.0, lw=0.)
